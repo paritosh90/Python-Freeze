@@ -18,10 +18,6 @@ class Freeze:
         return setattr(self.obj, item, value)
 
     def _test(self, item):
-        ##############################
-        from datetime import datetime
-        st=datetime.now()
-        ##############################
         list = self.__dict__.get('list')
         list = list if list else []
         if item in list:
@@ -33,9 +29,6 @@ class Freeze:
             if item in list:
                 if not id(self) == id(thecaller):
                     raise Exception("%s is private variable of class %s"%(item,self.__class__.__name__))
-            ######################################
-        en = datetime.now()
-        print "Freeze: ",en-st
 
 class Test:
     def __init__(self):
